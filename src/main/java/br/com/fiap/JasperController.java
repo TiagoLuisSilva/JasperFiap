@@ -32,7 +32,7 @@ public class JasperController {
 	}
 	@RequestMapping(value="/cliente/consultar", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)	
 	public  @ResponseBody ResponseEntity<Object>  consultarClientes(@RequestBody ClienteDTO clienteDTO) throws ValidarException{
-		List<ClienteVO> listaClientes = clienteComponent.buscarTodos();
+		List<ClienteVO> listaClientes = clienteComponent.buscarPorNome(clienteDTO);
 		List<ClienteDTO> listaRetorno = new ArrayList<ClienteDTO>();
 		for (ClienteVO cliente : listaClientes){
 			ClienteDTO dto = new ClienteDTO(cliente);
