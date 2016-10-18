@@ -100,15 +100,20 @@ public class ClienteComponent extends BaseCRUDComponent<ClienteVO>{
 		this.persistir(cliente4);
 		this.persistir(cliente5);
 		
-		gerarBoleto(cliente1);
+		gerarBoleto(cliente1, 0,  2);
 	}
 
-	private void gerarBoleto(ClienteVO cliente) {
+	private void gerarBoleto(ClienteVO cliente, Integer diasDataDocumento, Integer diasVencimento) {
 		 BoletoVO boleto = new BoletoVO();
 		 boleto.setCliente(cliente);
 		 
 		 Calendar calendar = Calendar.getInstance();
+		 calendar.add(Calendar.DAY_OF_MONTH, -diasDataDocumento);
+		 boleto.setDataDocumento(calendar.getTime());
 		 
+		 calendar = Calendar.getInstance();
+		 calendar.add(Calendar.DAY_OF_MONTH, diasVencimento);
+		 boleto.setDataVencimento(calendar.getTime());
 	}
 
 	private void setEnderecoCliente(ClienteVO cliente, String endereco) {
