@@ -21,7 +21,7 @@ public class BoletoVO {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cliente_id")
-	private ClienteVO clientte;
+	private ClienteVO cliente;
 	
 	@Column
 	private String codigoDeBarras;
@@ -54,11 +54,11 @@ public class BoletoVO {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public ClienteVO getClientte() {
-		return clientte;
+	public ClienteVO getCliente() {
+		return cliente;
 	}
-	public void setClientte(ClienteVO clientte) {
-		this.clientte = clientte;
+	public void setCliente(ClienteVO clientte) {
+		this.cliente = clientte;
 	}
 	public String getCodigoDeBarras() {
 		return codigoDeBarras;

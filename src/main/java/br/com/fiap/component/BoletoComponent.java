@@ -43,4 +43,8 @@ public class BoletoComponent extends BaseCRUDComponent<BoletoVO>{
 		}
 		return existe;
 	}
+
+	public void gerarMassaDeDados() {
+	   
+	}
 }

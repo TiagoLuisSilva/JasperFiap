@@ -3,6 +3,8 @@ package br.com.fiap;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.component.BoletoComponent;
 import br.com.fiap.component.ClienteComponent;
 import br.com.fiap.dto.ClienteDTO;
 import br.com.fiap.entity.ClienteVO;
@@ -25,6 +28,20 @@ public class JasperController {
 
 	@Autowired
 	private ClienteComponent clienteComponent;
+	@Autowired
+	private BoletoComponent boletoComponent;
+	
+	@PostConstruct
+	private void checarRegistros() throws ValidarException{
+		if (!clienteComponent.existeRegistro()){
+			clienteComponent.gerarMassaDeDados();
+		}
+		if (!boletoComponent.existeRegistro()){
+			boletoComponent.gerarMassaDeDados();
+		}
+		
+	}
+	
 	@RequestMapping("/gerarRelatorio")
 	public String gerarRelatorio(){ 
 		
