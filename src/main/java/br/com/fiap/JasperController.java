@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.component.BoletoComponent;
 import br.com.fiap.component.ClienteComponent;
+import br.com.fiap.component.MassaDeDados;
 import br.com.fiap.dto.ClienteDTO;
 import br.com.fiap.entity.ClienteVO;
 import br.com.fiap.exceptions.ValidarException;
+import br.com.fiap.repository.ClienteRepository;
  
  
 
@@ -27,19 +29,17 @@ import br.com.fiap.exceptions.ValidarException;
 public class JasperController {
 
 	@Autowired
-	private ClienteComponent clienteComponent;
+	private MassaDeDados massaDeDados;
+
 	@Autowired
-	private BoletoComponent boletoComponent;
+	private ClienteComponent clienteComponent;
 	
 	@PostConstruct
 	private void checarRegistros() throws ValidarException{
-		if (!clienteComponent.existeRegistro()){
-			clienteComponent.gerarMassaDeDados();
+		if (!massaDeDados.existeRegistro()){
+			massaDeDados.gerarMassaDeDados();
 		}
-		if (!boletoComponent.existeRegistro()){
-			boletoComponent.gerarMassaDeDados();
-		}
-		
+		 
 	}
 	
 	@RequestMapping("/gerarRelatorio")

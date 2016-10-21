@@ -91,12 +91,18 @@ public class BoletoVO {
 		this.dataVencimento = dataVencimento;
 	}
 	public BigDecimal getValorDocumento() {
+		if (valorDocumento == null){
+			valorDocumento = BigDecimal.ZERO;
+		}
 		return valorDocumento;
 	}
 	public void setValorDocumento(BigDecimal valorDocumento) {
 		this.valorDocumento = valorDocumento;
 	}
 	public BigDecimal getMulta() {
+		if (multa == null){
+			multa = BigDecimal.ZERO;
+		}
 		return multa;
 	}
 	public void setMulta(BigDecimal multa) {
