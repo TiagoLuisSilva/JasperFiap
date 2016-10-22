@@ -30,14 +30,14 @@ public class NotaFiscalVO {
 	private String discriminacaoGeral;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="datavencimento")	
+	@Column(name="data")	
 	private Date data;
 
     @Column(precision = 15, scale = 2, nullable = false)
 	private BigDecimal valor;
 
-	@OneToMany(mappedBy="notaFiscal", cascade=CascadeType.ALL ,fetch=FetchType.EAGER)
-	private List<BoletoNotaFiscalVO> listaBoletos;
+	@OneToMany(mappedBy="notaFiscal", cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
+	private List<BoletoVO> listaBoletos;
 
 	public Long getId() {
 		return id;
@@ -79,11 +79,11 @@ public class NotaFiscalVO {
 		this.valor = valor;
 	}
 
-	public List<BoletoNotaFiscalVO> getListaBoletos() {
+	public List<BoletoVO> getListaBoletos() {
 		return listaBoletos;
 	}
 
-	public void setListaBoletos(List<BoletoNotaFiscalVO> listaBoletos) {
+	public void setListaBoletos(List<BoletoVO> listaBoletos) {
 		this.listaBoletos = listaBoletos;
 	} 
 }

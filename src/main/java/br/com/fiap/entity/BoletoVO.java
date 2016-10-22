@@ -3,6 +3,7 @@ package br.com.fiap.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +23,10 @@ public class BoletoVO {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cliente_id")
 	private ClienteVO cliente;
+
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="notafiscal_id")
+	private NotaFiscalVO notaFiscal;
 	
 	@Column
 	private String codigoDeBarras;
@@ -59,6 +64,12 @@ public class BoletoVO {
 	}
 	public void setCliente(ClienteVO clientte) {
 		this.cliente = clientte;
+	}
+	public NotaFiscalVO getNotaFiscal() {
+		return notaFiscal;
+	}
+	public void setNotaFiscal(NotaFiscalVO notaFiscal) {
+		this.notaFiscal = notaFiscal;
 	}
 	public String getCodigoDeBarras() {
 		return codigoDeBarras;

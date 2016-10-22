@@ -1,13 +1,10 @@
 package br.com.fiap.component;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
@@ -16,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.fiap.dto.ClienteDTO;
-import br.com.fiap.entity.BoletoVO;
 import br.com.fiap.entity.ClienteVO;
 import br.com.fiap.exceptions.ValidarException;
 import br.com.fiap.repository.ClienteRepository;
@@ -41,7 +37,9 @@ public class ClienteComponent extends BaseCRUDComponent<ClienteVO>{
 	public List<ClienteVO> buscarPorNome(ClienteDTO clienteDTO) {
 
 		Criteria criteria = entityManager.unwrap(Session.class).createCriteria(ClienteVO.class);
-		criteria.add(Restrictions.like("nome", "%"+clienteDTO.getNome()));
+		if (clienteDTO !=null && !StringUtils.isBlank(clienteDTO.getNome())){
+			criteria.add(Restrictions.like("nome", "%"+clienteDTO.getNome()));
+		} 
 		return criteria.list();
 	}
 

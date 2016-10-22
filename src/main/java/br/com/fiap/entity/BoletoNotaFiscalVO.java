@@ -1,5 +1,6 @@
 package br.com.fiap.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+ 
 
 @Entity(name="boletonotafiscal")
 public class BoletoNotaFiscalVO {
@@ -15,11 +17,11 @@ public class BoletoNotaFiscalVO {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)	
 	private Long id;
 
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="boletoid")
 	private BoletoVO boleto;
 
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="notafiscal_id")
 	private NotaFiscalVO notaFiscal;
 	

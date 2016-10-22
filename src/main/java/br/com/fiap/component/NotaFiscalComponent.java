@@ -8,24 +8,24 @@ import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.fiap.entity.BoletoVO;
+import br.com.fiap.entity.NotaFiscalVO;
 import br.com.fiap.exceptions.ValidarException;
-import br.com.fiap.repository.BoletoRepository;
+import br.com.fiap.repository.NotaFiscalRepository;
 
 @Component
-public class BoletoComponent extends BaseCRUDComponent<BoletoVO>{
+public class NotaFiscalComponent extends BaseCRUDComponent<NotaFiscalVO>{
 
 	@Autowired
-	private BoletoRepository boletoRepository;
+	private NotaFiscalRepository notaFiscalRepository;
 	
 
 	@PostConstruct
 	public void setUp() {
-		setBaseRepository(boletoRepository);
+		setBaseRepository(notaFiscalRepository);
 	}
 	
 	@Override
-	protected void validarCadastro(BoletoVO object) throws ValidarException {
+	protected void validarCadastro(NotaFiscalVO object) throws ValidarException {
 		  
 	}
 
@@ -33,7 +33,7 @@ public class BoletoComponent extends BaseCRUDComponent<BoletoVO>{
 
 	public boolean existeRegistro() {
 
-		Criteria criteria = entityManager.unwrap(Session.class).createCriteria(BoletoVO.class);
+		Criteria criteria = entityManager.unwrap(Session.class).createCriteria(NotaFiscalVO.class);
 		criteria.setProjection(Projections.countDistinct("id"));
 		Long registros = ((Number) criteria.uniqueResult()).longValue();
 		boolean existe = false;
