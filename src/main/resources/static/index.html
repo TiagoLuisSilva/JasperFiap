@@ -27,42 +27,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script>
-
-function alertar() {
-	alert("asidjasijd");
-}
- 
- function consultar() {
-
-		var obj= new Object(); 
-
-		obj.nome = $("#nome").val(); 
-		
-		var jsonObjs = JSON.stringify(obj); 
-
-	    $.ajax({
-	    	type: "POST",
-	        url: "http://localhost:9000/jasperfiap/cliente/consultar", 
-	        data: jsonObjs,
-	        dataType: 'json',
-	        contentType: "application/json", // send as JSON
-	        success: function(lista) {  
-	        	lista.forEach(adicionarItensTabela);  
-	        },
-	        cache: false
-	    }); 
- }
-
- function adicionarItensTabela(item, index) {
- 	  $("#tabela tbody").append( '<tr><td>' + item[0] +'</td><td>' + item[1] +'</td><td>' + item[2] +'</td></tr>' );
- 	console.log(item); 
- }
- $(document).ready({
-	 consultar();
-	 
- })
- </script>
 </head>
 
 <body>
