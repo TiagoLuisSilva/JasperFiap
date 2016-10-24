@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-10-23T23:55:53 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="585" leftMargin="10" rightMargin="0" topMargin="20" bottomMargin="20" uuid="46c16738-086c-4339-afe0-407da4288fc5">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.String"/>
+	<field name="dataDocumento" class="java.sql.Timestamp"/>
+	<field name="dataVencimento" class="java.sql.Timestamp"/>
+	<field name="valorDocumento" class="java.math.BigDecimal"/>
+	<field name="multa" class="java.math.BigDecimal"/>
+	<field name="valorCobrado" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="17">
+			<staticText>
+				<reportElement x="0" y="2" width="70" height="14" uuid="9ffd19c2-ab8a-4f2c-a72d-a1c64369ad7b"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="2" width="100" height="14" uuid="3a9e7432-0f44-42df-bce0-fcba0fa8bd6d"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[dataDocumento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="2" width="100" height="14" uuid="92f7b302-4cba-4f4d-bcb7-270da6def231"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[valorDocumento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="2" width="100" height="14" uuid="cd78a108-f420-49e6-9b36-01ceda02a01d"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[valorDocumento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="2" width="100" height="14" uuid="50ceb7ea-3e82-4c2c-9bd6-73298b1666dc"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[multa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="2" width="100" height="14" uuid="b456b9eb-dca2-4570-9a20-d4bfe5101bef"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[valorCobrado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="0" y="2" width="70" height="22" uuid="94fd1829-a608-40ea-9852-5c389afbda20"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="2" width="100" height="22" uuid="b136ac6f-8d56-4ab4-bec9-cecd2670e2e7"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="2" width="100" height="22" uuid="ef74a5ed-343c-4c15-9ce7-1014ac38716f"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="2" width="100" height="22" uuid="af8ac05f-ed74-42e1-b745-cc9e25848803"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="2" width="100" height="22" uuid="a4502f84-8f27-4811-a5c8-ca7c71e0eac5"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{multa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="2" width="100" height="22" uuid="3a933a4d-bbe3-48f1-9e5e-5fd2e05308ac"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCobrado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

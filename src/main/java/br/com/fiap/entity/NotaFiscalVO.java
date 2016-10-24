@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity(name="notafiscal")
 public class NotaFiscalVO {
@@ -39,6 +40,9 @@ public class NotaFiscalVO {
 	@OneToMany(mappedBy="notaFiscal", cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
 	private List<BoletoVO> listaBoletos;
 
+	@Transient
+	private boolean exibeBoletos;
+	
 	public Long getId() {
 		return id;
 	}
@@ -85,5 +89,13 @@ public class NotaFiscalVO {
 
 	public void setListaBoletos(List<BoletoVO> listaBoletos) {
 		this.listaBoletos = listaBoletos;
+	}
+
+	public boolean isExibeBoletos() {
+		return exibeBoletos;
+	}
+
+	public void setExibeBoletos(boolean exibeBoletos) {
+		this.exibeBoletos = exibeBoletos;
 	} 
 }

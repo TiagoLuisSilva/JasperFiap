@@ -1,6 +1,5 @@
 package br.com.fiap;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fiap.component.BoletoComponent;
 import br.com.fiap.component.ClienteComponent;
 import br.com.fiap.component.MassaDeDados;
+import br.com.fiap.component.NotaFiscalComponent;
 import br.com.fiap.dto.ClienteDTO;
 import br.com.fiap.dto.FiltroBoletoDTO;
+import br.com.fiap.dto.FiltroNotasFiscaisDTO;
 import br.com.fiap.entity.ClienteVO;
 import br.com.fiap.exceptions.ValidarException;
 import br.com.fiap.uteis.ParametrosRelVO;
@@ -39,6 +40,8 @@ public class JasperController {
 	private ClienteComponent clienteComponent;
 	@Autowired
 	private BoletoComponent boletoComponent;
+	@Autowired
+	private NotaFiscalComponent notaFiscalComponent;
 	
 	@PostConstruct
 	private void checarRegistros() throws ValidarException{ 
@@ -109,5 +112,29 @@ public class JasperController {
 		
 		 return Uteis.abrirPdf(arquivo, "Boleto.pdf"); 
 	}
+
 	 
+	@RequestMapping(value="/notafiscal/gerarRelatorio", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)	
+	public HttpEntity<byte[]>  gerarRelatorioNotasFiscais(@RequestBody FiltroNotasFiscaisDTO filtroNotas) throws Exception{ 
+
+		 String  url = JasperController.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+		 ParametrosRelVO parametros = new ParametrosRelVO();
+		 parametros.setDiretorioRel(url+"relatorios");
+		 
+		 byte[] arquivo = notaFiscalComponent.gerarRelatorio(filtroNotas.getIdCliente(), filtroNotas.getIdNotaFiscal(), filtroNotas.isGeraBoletos(), parametros);
+		
+		 return Uteis.abrirPdf(arquivo, "Boleto.pdf"); 
+	}
+
+	@RequestMapping(value="/notafiscal/gerarRelatorio", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)	
+	public HttpEntity<byte[]>  gerarRelatorioNotasFiscaiss() throws Exception{ 
+
+		 String  url = JasperController.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+		 ParametrosRelVO parametros = new ParametrosRelVO();
+		 parametros.setDiretorioRel(url+"/relatorios");
+		 
+		 byte[] arquivo = notaFiscalComponent.gerarRelatorio(null, 15L, false, parametros);
+		
+		 return Uteis.abrirPdf(arquivo, "NotaFiscal.pdf"); 
+	}
 }

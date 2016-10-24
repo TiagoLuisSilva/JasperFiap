@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-10-24T00:08:33 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="notas" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa19f656-e527-40bb-ad7b-e8cf2139742a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cliente.nome" class="java.lang.String"/>
+	<field name="cliente.cnpj" class="java.lang.String"/>
+	<field name="cliente.endereco" class="java.lang.String"/>
+	<field name="cliente.cidade" class="java.lang.String"/>
+	<field name="cliente.estado" class="java.lang.String"/>
+	<field name="discriminacaoGeral" class="java.lang.String"/>
+	<field name="data" class="java.sql.Timestamp"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="listaBoletos" class="java.util.List"/>
+	<field name="exibeBoletos" class="java.lang.Boolean"/>
+	<field name="cliente.id" class="java.lang.Long"/>
+	<field name="valor" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="Group1" footerPosition="ForceAtBottom">
+		<groupExpression><![CDATA[$F{cliente.cnpj}]]></groupExpression>
+		<groupHeader>
+			<band height="116">
+				<textField>
+					<reportElement positionType="Float" x="0" y="18" width="480" height="10" uuid="a4565655-9f96-4dc6-8c24-82643714f55a">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Nome: " +$F{cliente.nome}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" x="0" y="70" width="480" height="10" uuid="3161498b-45ca-47ea-9a90-e13d2abbb07f"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["CNPJ: "+$F{cliente.cnpj}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" x="0" y="31" width="480" height="10" uuid="39aadd73-ffc2-44fe-ba6d-62bae715bf6b"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Endereco: " + $F{cliente.endereco}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" x="0" y="44" width="480" height="10" uuid="fe391946-9633-4822-9f0a-c3f8ae862791"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Cidade: " +  $F{cliente.cidade}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" x="0" y="57" width="480" height="10" uuid="ec37ab69-536f-408f-b8e4-16c83b7187b3"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Estado: " +   $F{cliente.estado}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="88" width="180" height="17" uuid="9344838d-35f5-42ae-9092-7aef7805717f"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Número]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="180" y="88" width="224" height="17" uuid="a2f02d98-46a3-46b1-b773-910e551d366e"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Discriminação]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="405" y="88" width="74" height="17" uuid="26142051-0aef-4930-aa92-7c5ff269a527"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Data]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="480" y="88" width="74" height="17" uuid="518e7d08-47c3-4101-b365-5eb0f29f4fcd"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Valor]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="105" width="552" height="1" uuid="f735a2d8-4034-4b13-8385-21e792910a27"/>
+				</line>
+				<textField>
+					<reportElement positionType="Float" x="0" y="5" width="480" height="10" uuid="6d00b4cc-8f18-4d01-81dd-134a00b7e267">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Número: " + $F{cliente.id}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="116" y="9" width="320" height="30" uuid="6ec5b106-320e-4003-ace9-a91ee7551444"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Nota Fiscal]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="6" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="180" height="15" uuid="a3c5a25f-4a51-4ab2-bdc9-fcafe3e7b59b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="180" y="0" width="225" height="15" uuid="934f013f-3369-4c53-80e6-2f12f646ff3a"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{discriminacaoGeral}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement positionType="Float" x="405" y="0" width="75" height="15" uuid="8bc1c2f7-4ef0-4ed8-bcf8-f45814ede4b5"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="480" y="0" width="75" height="15" uuid="2661d70f-f1b0-4c14-8e6e-c6373cbda9e3"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH:mm ">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="320" y="0" width="150" height="20" uuid="08353509-df31-4584-a8f6-a8714cf71196">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
