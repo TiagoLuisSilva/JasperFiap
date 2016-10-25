@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-10-24T00:08:33 -->
+<!-- 2016-10-24T22:14:33 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="notas" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa19f656-e527-40bb-ad7b-e8cf2139742a">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
@@ -21,10 +21,11 @@
 	<field name="valor" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="listaBoletosJr" class="java.lang.Object"/>
 	<group name="Group1" footerPosition="ForceAtBottom">
 		<groupExpression><![CDATA[$F{cliente.cnpj}]]></groupExpression>
 		<groupHeader>
-			<band height="116">
+			<band height="107">
 				<textField>
 					<reportElement positionType="Float" x="0" y="18" width="480" height="10" uuid="a4565655-9f96-4dc6-8c24-82643714f55a">
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
@@ -155,11 +156,21 @@
 				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
 			</textField>
 		</band>
+		<band height="14">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<subreport>
+				<reportElement x="0" y="1" width="544" height="13" uuid="fba46bb6-3806-4c4e-af44-a3967f590a6b">
+					<printWhenExpression><![CDATA[$F{listaBoletosJr} != null]]></printWhenExpression>
+				</reportElement>
+				<dataSourceExpression><![CDATA[$F{listaBoletosJr}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subReportBoletos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</detail>
 	<pageFooter>
-		<band height="21" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField pattern="dd/MM/yyyy HH:mm ">
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="320" y="0" width="150" height="20" uuid="08353509-df31-4584-a8f6-a8714cf71196">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="404" y="0" width="150" height="20" uuid="08353509-df31-4584-a8f6-a8714cf71196">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>

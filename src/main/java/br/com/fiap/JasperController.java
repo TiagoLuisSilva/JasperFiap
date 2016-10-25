@@ -134,7 +134,7 @@ public class JasperController {
 		 parametros.setDiretorioRel(url+"/relatorios");
 		 
 		 byte[] arquivo = notaFiscalComponent.gerarRelatorio(null, 15L, false, parametros);
-		
+		   
 		 return Uteis.abrirPdf(arquivo, "NotaFiscal.pdf"); 
 	}
 }

@@ -17,6 +17,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.fiap.entity.BoletoVO;
 import br.com.fiap.entity.NotaFiscalVO;
 import br.com.fiap.exceptions.ValidarException;
 import br.com.fiap.repository.NotaFiscalRepository;
@@ -67,7 +68,7 @@ public class NotaFiscalComponent extends BaseCRUDComponent<NotaFiscalVO>{
 	    Map<String,Object> params = new HashMap<>();
 	    dataSource = new JRBeanCollectionDataSource(superRelVO.getObjetos(), false);
 	    JasperReport jasperReport = (JasperReport) JRLoader.loadObject(jasperStream); 
-	    params.put("SUBREPORT_DIR", "/relatorios/");
+	    params.put("SUBREPORT_DIR", "relatorios/");
 	    params.put(JRParameter.REPORT_LOCALE, new Locale("pt", "BR"));
 	 
 	    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
@@ -112,7 +113,10 @@ public class NotaFiscalComponent extends BaseCRUDComponent<NotaFiscalVO>{
 		NotaFiscalVO nota = (NotaFiscalVO) criteria.uniqueResult();
 		
 		if (nota.getListaBoletos() !=null && !nota.getListaBoletos().isEmpty()){
-			Hibernate.initialize(nota.getListaBoletos());
+			criteria = entityManager.unwrap(Session.class).createCriteria(BoletoVO.class);
+			criteria.createAlias("notaFiscal", "notaFiscal");
+			criteria.add(Restrictions.eq("notaFiscal.id", nota.getId()));
+			nota.setListaBoletos(criteria.list());
 		}
 		return nota;
 	}

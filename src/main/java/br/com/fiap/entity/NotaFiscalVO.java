@@ -18,6 +18,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
+
 @Entity(name="notafiscal")
 public class NotaFiscalVO {
 	@Id
@@ -86,7 +89,11 @@ public class NotaFiscalVO {
 	public List<BoletoVO> getListaBoletos() {
 		return listaBoletos;
 	}
+	public JRDataSource getListaBoletosJr() {
 
+		JRDataSource jr = new JRBeanArrayDataSource(getListaBoletos().toArray());
+		return jr;
+	}
 	public void setListaBoletos(List<BoletoVO> listaBoletos) {
 		this.listaBoletos = listaBoletos;
 	}
