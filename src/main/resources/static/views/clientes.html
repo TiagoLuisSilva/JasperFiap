@@ -1,10 +1,18 @@
 <div>
-	Consulta de Clientes
-	
-	<h3>{{erro}}</h3>
-	
-	
-	
+	<h1>Consulta de Clientes</h1>
+
+	<div class="row">
+		<h3>{{erro}}</h3>
+	</div>
+	<div class="row">
+		<button class="btn btn-primary" ng-click="impGeral()">
+			Impressão Geral</button>
+	</div>
+	<div class="row">
+		<label for="imprimeBoleto">Imprimir boleto</label> <input
+			type="checkbox" id="imprimeBoleto" ng-model="imprimeBoleto">
+	</div>
+
 	<table id="tabela" class="table table-striped">
 		<thead>
 			<th>Nome</th>
@@ -12,7 +20,6 @@
 			<th>Endereco</th>
 			<th>Cidade</th>
 			<th>Estado</th>
-			<th>Gera boleto</th>
 		</thead>
 		<tbody>
 			<tr ng-repeat="cliente in clientes">
@@ -21,8 +28,8 @@
 				<td>{{ cliente.endereco }}</td>
 				<td>{{ cliente.cidade }}</td>
 				<td>{{ cliente.estado }}</td>
-				<td><input type='checkbox'></td>
-				<td><button ng-click="">Imprime Notas</button></td>
+				<td><button class="btn btn-success"
+						ng-click="impCliente(cliente)">Imprime Notas</button></td>
 			</tr>
 		</tbody>
 	</table>
