@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Boletos</title>
-</head>
-<body>
-Consulta de Boletos
-</body>
-</html>
+<div>
+	Consulta de Boletos
+	<table id="tabela" class="table table-striped">
+		<thead>
+			<th>Código de Barras</th>
+			<th>Nome do Banco</th>
+			<th>Observação</th>
+			<th>Data de Emissão</th>
+			<th>Data de Vencimento</th>
+			<th>Valor</th>
+			<th>Multa</th>
+			<th>Valor Cobrado</th>
+			<th>Pagar em</th>
+			<th>Beneficiario</th>
+			<th>CNPJ Beneficiario</th>
+			<th>Agencia Beneficiario</th>
+			<th>Espécie</th>
+			<th>Aceite</th>
+			<th>Data Processamento</th>
+			<th>Cateira</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="boleto in boletos">
+				<td>{{ boleto.codigoDeBarras }}</td>
+				<td>{{ boleto.nomeBanco }}</td>
+				<td>{{ boleto.observacao }}</td>
+				<td>{{ boleto.dataDocumento }}</td>
+				<td>{{ boleto.dataVencimento }}</td>
+				<td>{{ boleto.valorDocumento }}</td>
+				<td>{{ boleto.multa }}</td>
+				<td>{{ boleto.valorCobrado }}</td>
+				<td>{{ boleto.localPagamento }}</td>
+				<td>{{ boleto.beneficiario }}</td>
+				<td>{{ boleto.cnpjBeneficiario }}</td>
+				<td>{{ boleto.agenciaCodigoBeneficiario }}</td>
+				<td>{{ boleto.especie }}</td>
+				<td>{{ boleto.aceite }}</td>
+				<td>{{ boleto.dataProcessamento }}</td>
+				<td>{{ boleto.cateira }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

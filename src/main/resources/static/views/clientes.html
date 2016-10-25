@@ -1,68 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<title>Clientes</title>
-</head>
-<body>
+<div>
 	Consulta de Clientes
-	<input class="form-control" type="text" id="nome" placeholder="Digite um Nome">
-	<button type="button" class="btn btn-primary" onclick="alert('Teste Botão');">Consultar</button>
 	<table id="tabela" class="table table-striped">
 		<thead>
 			<th>Nome</th>
 			<th>CNPJ</th>
 			<th>Endereco</th>
+			<th>Cidade</th>
 			<th>Estado</th>
 		</thead>
 		<tbody>
-
+			<tr ng-repeat="cliente in clientes">
+				<td>{{ cliente.nome }}</td>
+				<td>{{ cliente.cnpj }}</td>
+				<td>{{ cliente.endereco }}</td>
+				<td>{{ cliente.cidade }}</td>
+				<td>{{ cliente.estado }}</td>
+			</tr>
 		</tbody>
 	</table>
-	<!-- jQuery   -->
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<!-- Bootstrap Core JavaScript -->
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script>
-		function adicionarItensTabela(item, index) {
-			$("#tabela tbody").append(
-					'<tr><td>' + item[0] + '</td><td>' + item[1] + '</td><td>'
-							+ item[2] + '</td></tr>');
-			console.log(item);
-		}
-
-		$(document).ready(function() {
-			consultar();
-		});
-
-		function consultar() {
-
-			var obj = new Object();
-
-			obj.nome = $("#nome").val();
-
-			var jsonObjs = JSON.stringify(obj);
-
-			$.ajax({
-				type : "POST",
-				url : "http://localhost:9000/jasperfiap/cliente/consultar",
-				data : jsonObjs,
-				dataType : 'json',
-				contentType : "application/json", // send as JSON
-				success : function(lista) {
-					lista.forEach(adicionarItensTabela);
-				},
-				cache : false
-			});
-		}
-
-		function carregarPagina(pagina) {
-			document.getElementById("conteudo").innerHTML = '<object type="text/html" data="' + pagina +'.html" ></object>';
-		}
-	</script>
-</body>
-</html>
+</div>
