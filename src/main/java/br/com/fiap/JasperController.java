@@ -20,9 +20,11 @@ import br.com.fiap.component.BoletoComponent;
 import br.com.fiap.component.ClienteComponent;
 import br.com.fiap.component.MassaDeDados;
 import br.com.fiap.component.NotaFiscalComponent;
+import br.com.fiap.dto.BoletoDTO;
 import br.com.fiap.dto.ClienteDTO;
 import br.com.fiap.dto.FiltroBoletoDTO;
 import br.com.fiap.dto.FiltroNotasFiscaisDTO;
+import br.com.fiap.entity.BoletoVO;
 import br.com.fiap.entity.ClienteVO;
 import br.com.fiap.exceptions.ValidarException;
 import br.com.fiap.uteis.ParametrosRelVO;
@@ -49,7 +51,7 @@ public class JasperController {
 			massaDeDados.gerarMassaDeDados();
 		} 
 	}
-	
+	//////////////////////// CLIENTES ////////////////////////////////////
 	@RequestMapping("/cliente/gerarRelatorio")
 	public HttpEntity<byte[]>  gerarRelatorio() throws Exception{ 
 
@@ -87,7 +89,20 @@ public class JasperController {
 		return new ResponseEntity<Object>(listaRetorno, null, HttpStatus.OK);
 		
 	}
-	
+	//////////////////////// BOLETOS  ////////////////////////////////////
+
+
+	@RequestMapping(value="/boleto/consultar", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)	
+	public  @ResponseBody ResponseEntity<Object>  consultarBoletos() throws ValidarException{
+		List<BoletoVO> listaboletos = boletoComponent.buscarTodos();
+		List<BoletoDTO> listaRetorno = new ArrayList<BoletoDTO>();
+		for (BoletoVO boleto : listaboletos){
+			BoletoDTO dto = new BoletoDTO(boleto);
+			listaRetorno.add(dto);
+		}
+		return new ResponseEntity<Object>(listaRetorno, null, HttpStatus.OK);
+		
+	}
 	@RequestMapping("/boleto/gerarRelatorio")
 	public HttpEntity<byte[]>  gerarRelatorioRelatorio() throws Exception{ 
 
@@ -113,17 +128,18 @@ public class JasperController {
 		 return Uteis.abrirPdf(arquivo, "Boleto.pdf"); 
 	}
 
+	//////////////////////// NOTAS ////////////////////////////////////
 	 
 	@RequestMapping(value="/notafiscal/gerarRelatorio", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)	
 	public HttpEntity<byte[]>  gerarRelatorioNotasFiscais(@RequestBody FiltroNotasFiscaisDTO filtroNotas) throws Exception{ 
 
 		 String  url = JasperController.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 		 ParametrosRelVO parametros = new ParametrosRelVO();
-		 parametros.setDiretorioRel(url+"relatorios");
+		 parametros.setDiretorioRel(url+"/relatorios"); 
 		 
 		 byte[] arquivo = notaFiscalComponent.gerarRelatorio(filtroNotas.getIdCliente(), filtroNotas.getIdNotaFiscal(), filtroNotas.isGeraBoletos(), parametros);
 		
-		 return Uteis.abrirPdf(arquivo, "Boleto.pdf"); 
+		 return Uteis.abrirPdf(arquivo, "NotaFiscal.pdf"); 
 	}
 
 	@RequestMapping(value="/notafiscal/gerarRelatorio", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)	
