@@ -16,6 +16,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 
 @Entity(name="notafiscal")
 public class NotaFiscalVO {
@@ -39,6 +43,9 @@ public class NotaFiscalVO {
 	@OneToMany(mappedBy="notaFiscal", cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
 	private List<BoletoVO> listaBoletos;
 
+	@Transient
+	private boolean exibeBoletos;
+	
 	public Long getId() {
 		return id;
 	}
@@ -82,8 +89,20 @@ public class NotaFiscalVO {
 	public List<BoletoVO> getListaBoletos() {
 		return listaBoletos;
 	}
+	public JRDataSource getListaBoletosJr() {
 
+		JRDataSource jr = new JRBeanArrayDataSource(getListaBoletos().toArray());
+		return jr;
+	}
 	public void setListaBoletos(List<BoletoVO> listaBoletos) {
 		this.listaBoletos = listaBoletos;
+	}
+
+	public boolean isExibeBoletos() {
+		return exibeBoletos;
+	}
+
+	public void setExibeBoletos(boolean exibeBoletos) {
+		this.exibeBoletos = exibeBoletos;
 	} 
 }
