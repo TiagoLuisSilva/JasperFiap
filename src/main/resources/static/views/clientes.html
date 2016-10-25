@@ -1,5 +1,10 @@
 <div>
 	Consulta de Clientes
+	
+	<h3>{{erro}}</h3>
+	
+	
+	
 	<table id="tabela" class="table table-striped">
 		<thead>
 			<th>Nome</th>
@@ -7,6 +12,7 @@
 			<th>Endereco</th>
 			<th>Cidade</th>
 			<th>Estado</th>
+			<th>Gera boleto</th>
 		</thead>
 		<tbody>
 			<tr ng-repeat="cliente in clientes">
@@ -15,6 +21,8 @@
 				<td>{{ cliente.endereco }}</td>
 				<td>{{ cliente.cidade }}</td>
 				<td>{{ cliente.estado }}</td>
+				<td><input type='checkbox'></td>
+				<td><button ng-click="">Imprime Notas</button></td>
 			</tr>
 		</tbody>
 	</table>

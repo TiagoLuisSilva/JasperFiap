@@ -34,18 +34,6 @@ app.controller('boletoController', function($scope, $http){
     });
 });
 
-app.controller('notaController', function($scope, $http){
-	$http({
-        method : "GET",
-        url : "nota/consultar"
-    }).then(function mySucces(response) {
-        $scope.notas = response.data;
-    }, function myError(response) {
-        $scope.erro = response.statusText;
-    });
-});
-
-
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
@@ -58,10 +46,5 @@ app.config(function($routeProvider) {
     .when("/boletos", {
         templateUrl : "views/boletos.html",
         controller : "boletoController"
-    })
-    .when("/notas", {
-        templateUrl : "views/notas.html",
-        controller : "notaController"
     });
-    
 });
