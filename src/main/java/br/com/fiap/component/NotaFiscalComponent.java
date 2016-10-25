@@ -69,6 +69,7 @@ public class NotaFiscalComponent extends BaseCRUDComponent<NotaFiscalVO>{
 	    dataSource = new JRBeanCollectionDataSource(superRelVO.getObjetos(), false);
 	    JasperReport jasperReport = (JasperReport) JRLoader.loadObject(jasperStream); 
 	    params.put("SUBREPORT_DIR", "relatorios/");
+	    params.put("EXIBIR_BOLETOS", exibeBoletos);
 	    params.put(JRParameter.REPORT_LOCALE, new Locale("pt", "BR"));
 	 
 	    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
@@ -90,18 +91,15 @@ public class NotaFiscalComponent extends BaseCRUDComponent<NotaFiscalVO>{
         }
         return buffer;  
     }
-	public NotaFiscalVO bucarNotaFiscalPorCliente(Long idCliente) {
+	public List<NotaFiscalVO> bucarNotaFiscalPorCliente(Long idCliente) {
 
 		Criteria criteria = entityManager.unwrap(Session.class).createCriteria(NotaFiscalVO.class); 
 		criteria.createAlias("cliente", "cliente");
 		criteria.add(Restrictions.eq("cliente.id", idCliente));
 		
-		NotaFiscalVO nota = (NotaFiscalVO) criteria.uniqueResult();
-		
-		if (nota.getListaBoletos() !=null && !nota.getListaBoletos().isEmpty()){
-			Hibernate.initialize(nota.getListaBoletos());
-		}
-		return nota;
+		List<NotaFiscalVO> notas = (List<NotaFiscalVO>) criteria.list();
+		 
+		return notas;
 	}
 
 

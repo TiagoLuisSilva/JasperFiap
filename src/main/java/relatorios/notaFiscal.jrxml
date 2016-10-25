@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-10-24T22:14:33 -->
+<!-- 2016-10-24T22:53:52 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="notas" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa19f656-e527-40bb-ad7b-e8cf2139742a">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="EXIBIR_BOLETOS" class="java.lang.Boolean"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -158,9 +159,10 @@
 		</band>
 		<band height="14">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<printWhenExpression><![CDATA[$P{EXIBIR_BOLETOS}==true]]></printWhenExpression>
 			<subreport>
 				<reportElement x="0" y="1" width="544" height="13" uuid="fba46bb6-3806-4c4e-af44-a3967f590a6b">
-					<printWhenExpression><![CDATA[$F{listaBoletosJr} != null]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$P{EXIBIR_BOLETOS}==true]]></printWhenExpression>
 				</reportElement>
 				<dataSourceExpression><![CDATA[$F{listaBoletosJr}]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subReportBoletos.jasper"]]></subreportExpression>

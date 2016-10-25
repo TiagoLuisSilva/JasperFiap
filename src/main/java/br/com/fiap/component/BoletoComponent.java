@@ -55,6 +55,10 @@ public class BoletoComponent extends BaseCRUDComponent<BoletoVO>{
 		if(idBoleto !=null){
 		    boleto =  boletoRepository.getOne(idBoleto);
 		} 
+		boleto.setLocalPagamento("PAGAVEL EM QUALQUER AGENCIA BANCARIA");
+		boleto.setCnpjBeneficiario("50.485.215/0001-18");
+		boleto.setCateira("BS");
+		boleto.setEspecie("RS");
 		superRelVO.getObjetos().clear();
 		superRelVO.getObjetos().add(boleto); 
         JRDataSource dataSource = null;

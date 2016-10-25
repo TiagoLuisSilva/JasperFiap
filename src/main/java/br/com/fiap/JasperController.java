@@ -133,7 +133,7 @@ public class JasperController {
 		 ParametrosRelVO parametros = new ParametrosRelVO();
 		 parametros.setDiretorioRel(url+"/relatorios");
 		 
-		 byte[] arquivo = notaFiscalComponent.gerarRelatorio(null, 15L, false, parametros);
+		 byte[] arquivo = notaFiscalComponent.gerarRelatorio(11L, null, true, parametros);
 		   
 		 return Uteis.abrirPdf(arquivo, "NotaFiscal.pdf"); 
 	}
