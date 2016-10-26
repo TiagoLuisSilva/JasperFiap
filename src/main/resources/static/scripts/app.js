@@ -33,27 +33,29 @@ app.controller('clienteController', function($scope, $http, downloadService) {
 			downloadService.download("Relatório Geral", response);
 		}, function myError(response) {
 			console.log("Erro ao imprimir relatório geral");
-			$scope.erro = response.statusText;
+			$scope.erro = "Erro ao imprimir: Status - " + response.status + "Msg - " + response.statusText;
 			alert($scope.erro);
 		});
 	}
-	
-	$scope.impCliente = function() {
+
+	$scope.impCliente = function(cliente) {
 		return $http({
-			method : "GET",
-			url : "cliente/gerarRelatorio",
-			responseType : 'arraybuffer'
+			method : "POST",
+			url : "notafiscal/gerarRelatorio",
+			responseType : 'arraybuffer',
+			data : {
+				"idCliente" : cliente,
+				"geraBoletos" : $scope.imprimeBoleto
+			}
 		}).then(function mySucces(response) {
-			console.log("Imprimindo Relatório Geral");
-			downloadService.download("Relatório Geral", response);
+			console.log("Imprimindo Relatório Notas Cliente " + cliente);
+			downloadService.download("Relatório Notas Clientes", response);
 		}, function myError(response) {
 			console.log("Erro ao imprimir relatório geral");
-			$scope.erro = response.statusText;
+			$scope.erro = "Erro ao imprimir: Status - " + response.status + "Msg - " + response.statusText;
 			alert($scope.erro);
 		});
 	}
-	
-	
 
 });
 
@@ -64,8 +66,28 @@ app.controller('boletoController', function($scope, $http, downloadService) {
 	}).then(function mySucces(response) {
 		$scope.boletos = response.data;
 	}, function myError(response) {
-		$scope.erro = response.statusText;
+		$scope.erro = "Erro ao imprimir: Status - " + response.status + "Msg - " + response.statusText;
 	});
+	
+	$scope.impBoletoId = function(id) {
+		console.log("Boleto " + id);
+		return $http({
+			method : "POST",
+			url : "boleto/gerarRelatorio",
+			data : {
+				"idBoleto" : id
+			},
+			responseType : 'arraybuffer'
+		}).then(function mySucces(response) {
+			console.log("Imprimindo Relatório Boleto");
+			downloadService.download("Relatório Boleto " + id, response);
+		}, function myError(response) {
+			console.log("Erro ao imprimir relatório Boleto");
+			$scope.erro = "Erro ao imprimir: Status - " + response.status + "Msg - " + response.statusText;
+			alert($scope.erro);
+		});
+	}
+
 });
 
 app.config(function($routeProvider) {
