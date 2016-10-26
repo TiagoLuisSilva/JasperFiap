@@ -23,9 +23,7 @@ public class MassaDeDados {
 	@Autowired
 	private BoletoComponent boletoComponent;
 	@Autowired
-	private NotaFiscalComponent notaFiscalComponent;
-	@Autowired
-	private BoletoNotaFiscalComponent boletoNotaFiscalComponent;
+	private NotaFiscalComponent notaFiscalComponent; 
 	
 	public void gerarMassaDeDados() throws ValidarException {
 		

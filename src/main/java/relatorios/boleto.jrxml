@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-10-24T23:29:00 -->
+<!-- 2016-10-25T21:56:04 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="boleto-default" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Error" uuid="ff653490-88f9-4546-aaa6-53f137c26ccc">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -573,6 +573,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
+			<componentElement>
+				<reportElement x="2" y="242" width="381" height="30" uuid="49c6be49-ab4c-48b6-9985-572fb105633a"/>
+				<jr:PDF417 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$F{codigoDeBarras}]]></jr:codeExpression>
+				</jr:PDF417>
+			</componentElement>
 		</band>
 	</detail>
 </jasperReport>
