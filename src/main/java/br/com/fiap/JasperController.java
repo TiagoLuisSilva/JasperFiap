@@ -110,7 +110,7 @@ public class JasperController {
 		 ParametrosRelVO parametros = new ParametrosRelVO();
 		 parametros.setDiretorioRel(url+"/relatorios");
 		 
-		 byte[] arquivo = boletoComponent.gerarRelatorio(31L,parametros);
+		 byte[] arquivo = boletoComponent.gerarRelatorio(1L,parametros);
 		
 		 return Uteis.abrirPdf(arquivo, "Boleto.pdf");
 		  
