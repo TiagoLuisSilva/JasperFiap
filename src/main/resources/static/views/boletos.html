@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Boletos</title>
-</head>
-<body>
-Consulta de Boletos
-</body>
-</html>
+<div>
+	<h1>Consulta de Boletos</h1>
+
+	<div class="row">
+		<h3>{{erro}}</h3>
+	</div>
+	
+	<table id="tabela" class="table table-striped">
+		<thead>
+			<th>Cliente</th>
+			<th>Data de Emissão</th>
+			<th>Data de Vencimento</th>
+			<th>Valor</th>
+			<th>Multa</th>
+			<th>Valor Cobrado</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="boleto in boletos">
+				<td>{{ boleto.cliente }}</td>
+				<td>{{ boleto.dataDocumento }}</td>
+				<td>{{ boleto.dataVencimento }}</td>
+				<td>{{ boleto.valorDocumento }}</td>
+				<td>{{ boleto.multa }}</td>
+				<td>{{ boleto.valorCobrado }}</td>
+				<td><button class="btn btn-success"
+						ng-click="impBoletoId(boleto.id)">Imprime Boleto</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
